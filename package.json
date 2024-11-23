@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-router-dom": "^7.0.1",
+    "react-vite": "^0.0.5",
+    "vite": "^5.4.11",
+    "yarn": "^1.22.22"
+  },
+  "scripts": {
+    "dev": "vite"
+  }
+}
