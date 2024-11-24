@@ -40,10 +40,13 @@ const Main = () => {
                   <b>Color:</b> {car.color}
                 </p>
                 <p className="description">
-                  <b>Description:</b> {car.description}
+                  <b>Make:</b> {car.make}
                 </p>
                 <p className="car__model">
                   <b>Model:</b> {car.model}
+                </p>
+                <p className="car__image">
+                  <b>Model:</b> {car.image}
                 </p>
               </div>
             ))

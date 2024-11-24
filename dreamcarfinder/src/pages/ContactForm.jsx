@@ -7,20 +7,21 @@ const ContactForm = () => {
 const  toggleModal = () => {
   setIsModalOpen(!isModalOpen); //This shows Modal being visible 
 };
+
 return (
 <section id="ContactForm">
 <a href="#">
-<button class="mail__btn click" onclick="toggleModal()">
+<button class="mail__btn click" onClick={toggleModal}>
   <i class="fa-regular fa-envelope"></i>
 </button>
 </a>
-<a href="Find your cat" class="scroll">
+<a href="Find your car" class="scroll">
 <div class="scroll__icon click"></div>
 </a>
 <div class="modal">
 <div class="modal__half modal__about">
   <h3 class="modal__title modal__title--about">
-    Here's a bit about <b class="blue" onclick="toggleModal()"></b>
+    Here's a bit about <b class="blue" onclick={toggleModal}></b>
   </h3>
   <h4 class="modal__sub-title modal__sub-title--about">
     Best Car Directory
@@ -66,7 +67,7 @@ return (
 </div>
 
 <div class="modal__half modal__contact">
-  <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+  <i class="fas fa-times modal__exit click" onclick={toggleModal}></i>
   <h3 class="modal__title modal__title--contact">Let's have a chat!</h3>
   <h3 class="modal__sub-title modal__sub-title--contact">
     Come visit and find your new car!

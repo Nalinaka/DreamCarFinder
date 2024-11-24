@@ -1,83 +1,125 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import  axios from "axios";
-
+import axios from "axios";
 
 const Cars = () => {
-    const { Model } = useParams();
-    const [cars, setCars] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [searchModel, setSearchModel] = useState(Model);
+  const { Model } = useParams();
+  const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchModel, setSearchModel] = useState(Model || "");
+  const [filteredCars, setFilteredCars] = useState([]);
 
-    function onSearch() {
-        fetchCars(searchModel);
+  const fetchCars = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get('/api/v1/cars');
+      setCars(data);
+      setFilteredCars(data);
+    } catch (error) {
+      console.error("Error fetching cars:", error);
+      setCars([]);
+      setFilteredCars([]);
+    } finally {
+      setLoading(false);
     }
+  };
 
+  // Handle search
+  const handleSearch = () => {
+    const filtered = cars.filter(car => 
+      car.model.toLowerCase().includes(searchModel.toLowerCase())
+    );
+    setFilteredCars(filtered);
+  };
 
-    async function fetchCars(carModel) {
-        setLoading(true);
-        const { data } = await axios.get(
-          ("/api/v1/cars")
-        );
-        setCars(data);
-        setLoading(false);
+  // Handle input change
+  const handleInputChange = (event) => {
+    setSearchModel(event.target.value);
+  };
+
+  const onSearchKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
     }
+  };
 
-    function onSearchKeyPress(key) {
-        if (key === 'Enter') {
-            onSearch()
-        }
-    }
-    
-    // const fetchCars = useCallback(() => {
-    //   // try {
-    //   //   const response = await axios.get('https://freetestapi.com/api/v1/cars');  // Fetch car data
-    //   //   setCars(response.data);  // Updates with fetched data
-    //   // } catch (err) {
-    //   //   console.error('Error fetching cars:', err);
-    //   //   setError('Failed to fetch car data');  // Handles errors
-    //   // }
-    // }, []);
+  // Fetch cars on component mount
+  useEffect(() => {
+    fetchCars();
+  }, []);
 
-      useEffect(() => {
-        fetchCars();
-      }, [fetchCars]);
-    
-      return (
-        <>
-          <div className="car__search">
-            <Link to="/">
-            <button>← Back</button>
-            </Link>
-            <div className="car__search--container">
-              <label className="car__search--label">Search by carModel</label>
-              <input value={searchModel} onChange={(event) => setSearchModel(event.target.value)} />
-              onKeyPress={(event) => onSearchKeyPress(event.key)}
-        {/* At top tech companies you will see code written like this:   */}
-        {/* onKeyPress={(event) => event.key === 'Enter' && onSearch()}  */}
-    
-              <button onClick={() => onSearch()}>Enter</button>
-            </div>
-          </div>
-          {loading
-            ? new Array(10).fill(0).map((_, index) => (
-                <div className="car" key={index}>
-                  <div className="car__title">
-                    <div className="car__title--skeleton"></div>
-                  </div>
-                  <div className="car__body">
-                    <p className="car__body--skeleton"></p>
-                  </div>
-                </div>
-              ))
-            : cars.map(car => (
-                <div className="car" key={car.model}>
-                  <div className="car__title">{car.title}</div>
-                  <p className="car__body">{car.body}</p>
-                </div>
-              ))}
-        </>
+  // If there's an initial Model from params, filter on mount
+  useEffect(() => {
+    if (Model && cars.length > 0) {
+      const filtered = cars.filter(car => 
+        car.model.toLowerCase().includes(Model.toLowerCase())
       );
-    };
+      setFilteredCars(filtered);
+    }
+  }, [Model, cars]);
 
-    export default Cars;
+  return (
+    <div className="container mx-auto p-4">
+      <div className="car__search mb-6">
+        <Link to="/">
+          <button className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">
+            ← Back
+          </button>
+        </Link>
+        <div className="car__search--container mt-4 flex gap-2">
+          <div className="flex flex-col flex-1">
+            <label className="car__search--label mb-2">
+              Search by car model
+            </label>
+            <input
+              type="text"
+              className="border p-2 rounded"
+              value={searchModel}
+              onChange={handleInputChange}
+              onKeyPress={onSearchKeyPress}
+              placeholder="Enter car model..."
+            />
+          </div>
+          <button 
+            onClick={handleSearch}
+            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 self-end"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {loading ? (
+          // Skeleton loading state
+          [...Array(6)].map((_, index) => (
+            <div key={index} className="border rounded-lg p-4 animate-pulse">
+              <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+              <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+            </div>
+          ))
+        ) : filteredCars.length > 0 ? (
+          // Actual car data
+          filteredCars.map((car) => (
+            <div key={car.model} className="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+              <h2 className="text-xl font-semibold mb-2">{car.model}</h2>
+              <p className="text-gray-600">Make: {car.make}</p>
+              <p className="text-xl font-semibold mb-2">Price: {car.price}</p>
+              <img src={car.image} alt={car.model} className="w-full h-48 object-cover rounded mb-2"/>
+            </div>
+          ))
+        ) : (
+          // No results state
+          <div className="col-span-full text-center py-8 text-gray-500">
+            No cars found matching your search.
+          </div>
+        )}
+      </div>
+
+     
+    </div>
+  );
+};
+
+export default Cars;

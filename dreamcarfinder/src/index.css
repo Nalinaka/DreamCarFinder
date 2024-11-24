@@ -445,7 +445,7 @@ nav {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  height: 100px;
+  height: 200px;
   padding: 0 20px;
 }
 
@@ -563,7 +563,7 @@ TRANSLATE MAKES THE CONTACT FORM SLIDE IN */
   transform: scale(1);
 }
 
-.cat__Images--container {
+.car__Images--container {
   display: flex;
   flex-direction: row;
   margin-top: 4px;
@@ -626,7 +626,7 @@ NOW MODAL SLIDES IN FROM THE RIGHT - CONTACT SIDE IS ON RIGHT */
 }
 
 .modal__title {
-  color: rgb(69, 114, 228);
+  color: rgb(245, 245, 245);
   font-size: 26px;
   margin: 36px 0px 4px 0;
 }
@@ -647,8 +647,8 @@ NOW MODAL SLIDES IN FROM THE RIGHT - CONTACT SIDE IS ON RIGHT */
 }
 
 .form__submit {
-  background-color: rgb(69, 114, 228);
-  border: 2px solid rgb(69, 114, 228);
+  background-color:rgb(161, 155, 159);
+  border: 2px solid rgb(11, 11, 11);
   color: white;
   font-weight: 700;
   max-width: 240px;
@@ -663,14 +663,14 @@ NOW MODAL SLIDES IN FROM THE RIGHT - CONTACT SIDE IS ON RIGHT */
 .form__submit:hover {
   border-color: white;
   /* background-color: transparent; */
-  background-color: pink;
+  background-color: rgb(161, 155, 159);
   color: white;
 }
 
 /* 
 COME BACK TO THIS ONCE YOU CAN SEE THE CODE CORRECTLY */
 .form__submit:active {
-  background-color: rgb(69, 114, 228);
+  background-color: rgb(161, 155, 159);
   color: white;
 }
 
@@ -687,14 +687,14 @@ COME BACK TO THIS ONCE YOU CAN SEE THE CODE CORRECTLY */
 }
 
 .modal__overlay--loading {
-  background-color: rgb(69, 114, 228);
+  background-color: rgb(161, 155, 159);
   font-size: 80px;
   /* z-index: -1; */
 }
 
 .modal__overlay--success {
   background-color: rgb(166, 198, 178);
-  color: rgb(69, 114, 228);
+  color: rgb(161, 155, 159);
   font-size: 40px;
   font-weight: 700;
   text-align: center;

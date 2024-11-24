@@ -3,10 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Main from "./Main";
 import Cars from "./Cars";
-import Footer from "./Footer";
+import ContactForm from "./ContactForm";
 
-// import { useNavigate } from "react-router-dom";
-// const navigate = useNavigate();
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -41,7 +39,7 @@ const Home = () => {
           <ul class="nav__link--list">
             <li class="nav__link">
               <a
-                href="./pages/Home.jsx"
+                href="/"
                 class="nav__link--anchor link__hover-effect link__hover-effect--blue"
               >
                 <button>Home</button>
@@ -74,6 +72,7 @@ const Home = () => {
       </section>
       <Cars />
       <Main />
+      <ContactForm/>
     </section>
   );
 };
