@@ -52,7 +52,7 @@ const Home = () => {
                 href="./pages/Cars.jsx"
                 class="nav__link--anchor link__hover-effect link__hover-effect--blue"
               >
-                <Link to="./cars.jsx">
+                <Link to="/cars">
                   <button>Find your Car</button>
                 </Link>
               </a>

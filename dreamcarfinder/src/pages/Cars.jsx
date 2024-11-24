@@ -51,7 +51,7 @@ const Cars = () => {
             </Link>
             <div className="car__search--container">
               <label className="car__search--label">Search by carModel</label>
-              <input type="number" value={searchModel} onChange={(event) => setSearchModel(event.target.value)} />
+              <input value={searchModel} onChange={(event) => setSearchModel(event.target.value)} />
               onKeyPress={(event) => onSearchKeyPress(event.key)}
         {/* At top tech companies you will see code written like this:   */}
         {/* onKeyPress={(event) => event.key === 'Enter' && onSearch()}  */}
