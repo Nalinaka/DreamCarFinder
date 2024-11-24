@@ -8,7 +8,7 @@ const Main = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const { data } = await axios.get("https://freetestapi.com/api/v1/cars");
+        const { data } = await  axios.get("/api/v1/cars");
         setCars(data);
       } catch (error) {
         console.error("Error fetching cars:", error);

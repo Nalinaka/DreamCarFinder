@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import  axios from "axios";
-// import { useNavigate } from "react-router-dom";
 
 
 const Cars = () => {
@@ -30,9 +29,19 @@ const Cars = () => {
         }
     }
     
+    // const fetchCars = useCallback(() => {
+    //   // try {
+    //   //   const response = await axios.get('https://freetestapi.com/api/v1/cars');  // Fetch car data
+    //   //   setCars(response.data);  // Updates with fetched data
+    //   // } catch (err) {
+    //   //   console.error('Error fetching cars:', err);
+    //   //   setError('Failed to fetch car data');  // Handles errors
+    //   // }
+    // }, []);
+
       useEffect(() => {
         fetchCars();
-      }, []);
+      }, [fetchCars]);
     
       return (
         <>
