@@ -1,22 +1,12 @@
 import React, { useState, useEffect} from "react";
-import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 
 const ContactForm = () => {
-    const[form, setForm] = useState([]);
-    // const navigate = useNavigate();
+    const[isModalOpen, setIsModalOpen] = useState([false]);
 
 
-async function getForm() {
-    const { data } = await axios.get (
-        "https://freetestapi.com/api/v1/cars"
-    );
-    setForm(data);
-}
-
-useEffect (() => {
-    getForm();
-}, []);
+const  toggleModal = () => {
+  setIsModalOpen(!isModalOpen); //This shows Modal being visible 
+};
 return (
 <section id="ContactForm">
 <a href="#">
