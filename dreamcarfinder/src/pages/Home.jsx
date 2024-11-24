@@ -41,7 +41,7 @@ const Home = () => {
           <ul class="nav__link--list">
             <li class="nav__link">
               <a
-                href="./pages/cars.jsx"
+                href="./pages/Home.jsx"
                 class="nav__link--anchor link__hover-effect link__hover-effect--blue"
               >
                 <button>Home</button>
@@ -49,10 +49,10 @@ const Home = () => {
             </li>
             <li class="nav__link">
               <a
-                href="./findyourcar.html"
+                href="./pages/Cars.jsx"
                 class="nav__link--anchor link__hover-effect link__hover-effect--blue"
               >
-                <Link to="./main.jsx">
+                <Link to="./cars.jsx">
                   <button>Find your Car</button>
                 </Link>
               </a>
@@ -70,9 +70,8 @@ const Home = () => {
         <h1>California's Best Car Directory</h1>
         <h2>Find your new car now!</h2>
       </section>
-      <Main />
       <Cars />
-      <Footer />
+      <Main />
     </section>
   );
 };

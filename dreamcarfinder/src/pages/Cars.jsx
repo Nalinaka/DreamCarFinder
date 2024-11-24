@@ -17,7 +17,7 @@ const Cars = () => {
     async function fetchCars(carModel) {
         setLoading(true);
         const { data } = await axios.get(
-            `https://freetestapi.com/api/v1/cars?search=${carModel || Model}`
+          ("/api/v1/cars")
         );
         setCars(data);
         setLoading(false);
