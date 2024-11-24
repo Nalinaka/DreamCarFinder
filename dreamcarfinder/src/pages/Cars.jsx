@@ -14,6 +14,7 @@ const Cars = () => {
         fetchCars(searchModel);
     }
 
+
     async function fetchCars(carModel) {
         setLoading(true);
         const { data } = await axios.get(

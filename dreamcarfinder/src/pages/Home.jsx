@@ -1,17 +1,25 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Main from "./Main";
+import Cars from "./Cars";
+import Footer from "./Footer";
+
 // import { useNavigate } from "react-router-dom";
+    // const navigate = useNavigate();
 
 const Home = () => {
     const[users, setUsers] = useState([]);
-    // const navigate = useNavigate();
-
 
 async function getUsers() {
+  try {
     const { data } = await axios.get (
-        "https://freetestapi.com/api/v1/cars"
-    );
+        "https://freetestapi.com/api/v1/cars");
+        console.log(data);
     setUsers(data);
+} catch (error) {
+  console.error("Error fetching data:", error);
+}
 }
 
 useEffect (() => {
@@ -22,10 +30,10 @@ return (
     <section id="landing-page">
       <nav>
         <figure>
-          <li class="nav__link" onclick="toggleModal()">
+          <li className="nav__link" onclick="toggleModal()">
             <img
               id="car-logo"
-              src="./"
+              src="./assets/Dark Blue Minimalist Car Rental Deals Instagram Post.png"
               alt="logo"
             />
           </li>
@@ -34,7 +42,7 @@ return (
         <ul class="nav__link--list">
           <li class="nav__link">
             <a
-              href="./index.html"
+              href="./pages/cars.jsx"
               class="nav__link--anchor link__hover-effect link__hover-effect--blue"
             >
               <button>Home</button>
@@ -45,7 +53,7 @@ return (
               href="./findyourcar.html"
               class="nav__link--anchor link__hover-effect link__hover-effect--blue"
             >
-              <button>Find your Car</button>
+              <Link to="./"><button>Find your Car</button></Link>
             </a>
           </li>
           <li class="nav__link" onclick="toggleModal()">
@@ -59,9 +67,13 @@ return (
         </ul>
       </nav>
       <h1>California's Best Car Directory</h1>
-      <h2>Find your new car now</h2>
+      <h2>Find your new car now!</h2>
     </section>
+    <Main/>
+    <Cars/>
+    <Footer/>
     </section>
+   
 )
 };
 
