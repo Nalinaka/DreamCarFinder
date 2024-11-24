@@ -62,7 +62,9 @@ const Home = () => {
                 href="#"
                 class="nav__link--anchor link__hover-effect link__hover-effect--blue"
               >
+              <Link to="/contactform">
                 <button>Contact</button>
+                </Link>
               </a>
             </li>
           </ul>
