@@ -53,7 +53,7 @@ return (
               href="./findyourcar.html"
               class="nav__link--anchor link__hover-effect link__hover-effect--blue"
             >
-              <Link to="./"><button>Find your Car</button></Link>
+              <Link to="./main.jsx"><button>Find your Car</button></Link>
             </a>
           </li>
           <li class="nav__link" onclick="toggleModal()">
