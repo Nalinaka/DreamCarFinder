@@ -8,6 +8,11 @@ import ContactForm from "./ContactForm";
 
 const Home = () => {
   const [users, setUsers] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev); 
+  };
 
   async function getUsers() {
     try {
@@ -27,7 +32,7 @@ const Home = () => {
       <section id="landing-page">
         <nav>
           <figure>
-            <li className="nav__link" onclick="toggleModal()">
+            <li className="nav__link" button onlick="toggleModal()">
               <img
                 id="car-logo"
                 src="./assets/Dark Blue Minimalist Car Rental Deals Instagram Post.png"
@@ -55,15 +60,8 @@ const Home = () => {
                 </Link>
               </a>
             </li>
-            <li class="nav__link" onclick="toggleModal()">
-              <a
-                href="#"
-                class="nav__link--anchor link__hover-effect link__hover-effect--blue"
-              >
-              <Link to="/contactform">
-                <button>Contact</button>
-                </Link>
-              </a>
+            <li className="nav__link"> <button onClick={toggleModal}>
+              Contact</button>
             </li>
           </ul>
         </nav>

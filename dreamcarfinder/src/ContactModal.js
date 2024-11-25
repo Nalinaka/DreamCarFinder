@@ -1,3 +1,4 @@
+import { hasFormSubmit } from '@testing-library/user-event/dist/utils';
 import React, { useState, useEffect } from 'react';
 
 
@@ -71,7 +72,7 @@ const ContactModal = () => {
 
             <h3>Let's have a chat!</h3>
             {/* Contact Form */}
-            <form onSubmit={isModalOpen}>
+            <form onSubmit={handleContactFormSubmit}>
               <div className="form__item">
                 <label>Name</label>
                 <input name="user_name" type="text" required />
