@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Main from "./Main";
 import Cars from "./Cars";
 import ContactForm from "./ContactForm";
+import Footer from "./Footer";
+import carLogo from "./public/Car-logo.png";
 
 
 const Home = () => {
@@ -31,15 +33,23 @@ const Home = () => {
     <section id="navbar">
       <section id="landing-page">
         <nav>
-          <figure>
-            <li className="nav__link" button onlick="toggleModal()">
+        <nav>
+        <figure className="nav__link-logo">
+        <img
+        id="car-logo"
+        src="/Car-logo.png"
+        alt="logo"
+        className="car-logo"  
+        />
+        </figure>
+        </nav>
+            {/* <li className="nav__link-logo" button onlick="toggleModal()">
               <img
                 id="car-logo"
-                src="./assets/Dark Blue Minimalist Car Rental Deals Instagram Post.png"
+                src="./src/assets/Car-logo.png"
                 alt="logo"
               />
-            </li>
-          </figure>
+            </li> */}
 
           <ul class="nav__link--list">
             <li class="nav__link">
@@ -68,9 +78,10 @@ const Home = () => {
         <h1>California's Best Car Directory</h1>
         <h2>Find your new car now!</h2>
       </section>
+      <ContactForm/>
       <Cars />
       <Main />
-      <ContactForm/>
+      <Footer/>
     </section>
   );
 };

@@ -324,11 +324,11 @@ h2 {
   margin-top: 12px;
 }
 
-#car-logo {
+.car-logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 90px;
     border: none;
   }
 
@@ -445,7 +445,7 @@ nav {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  height: 200px;
+  /* height: 200px; */
   padding: 0 20px;
 }
 
@@ -454,7 +454,17 @@ nav {
 }
 
 .nav__link {
-  margin: 18px 12px;
+  margin: 12px 12px;
+}
+
+.nav__link-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 124px;
+  margin-top: 90px; 
+  width: 150px; 
+  border: none;
 }
 
 .nav__link--anchor {
@@ -921,6 +931,23 @@ button {
   transition: all 300ms ease;
 }
 
+.border.p-2.rounded {
+  cursor: pointer;
+  color: rgb(11, 11, 11);
+  background-color: rgb(161, 155, 159);
+  border: none;
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .submit__search {
   color: blue;
   background-color: white;
@@ -1101,7 +1128,9 @@ CAT INFORMATION
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 72px;
+  margin-bottom: 124px;
+  margin-top: 90px; 
+  width: 125px; 
   border: none;
 }
 
