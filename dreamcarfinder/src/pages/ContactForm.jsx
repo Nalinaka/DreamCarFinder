@@ -5,7 +5,7 @@ const ContactForm = ({ toggleModal, isModalOpen }) => {
 
 return (
   <div>
-  <button onClick={toggleModal}>Open Contact Form</button>
+  <button onClick={toggleModal}>Contact Us</button>
 
   {isModalOpen && (
         <div className="modal">
