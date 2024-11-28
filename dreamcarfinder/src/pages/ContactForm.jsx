@@ -8,12 +8,12 @@ return (
   <button onClick={toggleModal}>Contact Us</button>
 
   {isModalOpen && (
-        <div className="modal">
+        <div className="modal-overlay">
           <div className="modal__content">
             <button className="modal__close" onClick={toggleModal}>
               X
             </button>
-            <h3>Let's have a chat!</h3>
+            <h3 className="form__submit-h3">Let's have a chat!</h3>
             <form onSubmit={toggleModal}>
               <div className="form__item">
                 <label>Name</label>
@@ -38,8 +38,8 @@ return (
             </form>
           </div>
         </div>
-      )}
-    </div>
+  )}
+        </div>
   );
 };
 
